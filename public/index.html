@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart Waste Monitoring System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">&#9851;</span>
+      Clean&nbsp;City
+    </a>
+    <nav class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" title="Toggle theme">&#9728;</button>
+      <button id="reportBtnHeader" class="btn btn-solid">Report a Problem</button>
+      <a href="admin.html" class="btn btn-ghost">Admin Login</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow-line"><span class="rule"></span> Tamil Nadu Municipal Waste Monitoring</div>
+      <h1 class="hero-title">See every overflowing bin across Tamil Nadu before it becomes a problem.</h1>
+      <p class="hero-sub">
+        Public dustbins across Tamil Nadu towns are tracked live on the map below. The moment
+        a bin crosses a safe fill level, it turns up as a danger marker &mdash; type any town
+        or area name to jump straight to it, and anyone nearby can report an overflowing bin
+        in a few taps so the collection team is sent straight there.
+      </p>
+      <div class="hero-ctas">
+        <a href="#map-section" class="btn btn-solid">View Live Map</a>
+        <button id="reportBtnHero" class="btn btn-ghost">Report a Problem</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num" id="statTotal">&mdash;</div>
+          <div class="stat-label">Bins monitored</div>
+        </div>
+        <div>
+          <div class="stat-num" id="statOverflow">&mdash;</div>
+          <div class="stat-label">Overflowing now</div>
+        </div>
+        <div>
+          <div class="stat-num" id="statNormal">&mdash;</div>
+          <div class="stat-label">Within safe limit</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="legend-panel" style="border:none; padding:0;">
+        <h3>How the system works</h3>
+        <div class="legend-item"><span class="dot dot-normal"></span> Sensor reports fill level in real time</div>
+        <div class="legend-item"><span class="dot dot-warning"></span> Bin nearing capacity is flagged early</div>
+        <div class="legend-item"><span class="dot dot-overflow"></span> Overflow bin is marked as danger on the map</div>
+        <div class="legend-item">&#128233; Citizen nearby files a complaint against that bin</div>
+        <div class="legend-item">&#128737; Municipality team is dispatched and tracked live</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="map-section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Live bin status map — Tamil Nadu</h2>
+        <p class="section-desc">Green bins are within safe limits, gold bins are nearing capacity, and red bins are overflowing right now. Click any marker to file a complaint.</p>
+      </div>
+    </div>
+    <form id="locationSearchForm" class="location-search">
+      <input id="locationSearchInput" type="text" placeholder="Go to a place in Tamil Nadu — e.g. Thiruthuraipoondi" autocomplete="off" />
+      <button type="submit" class="btn btn-solid">Search</button>
+    </form>
+    <p id="locationSearchMsg" class="section-desc" style="display:none; margin:6px 0 18px;"></p>
+    <div class="map-layout">
+      <div id="map"></div>
+      <div class="legend-panel">
+        <h3>Legend</h3>
+        <div class="legend-item"><span class="dot dot-normal"></span> Normal (below 60%)</div>
+        <div class="legend-item"><span class="dot dot-warning"></span> Filling up (60&ndash;85%)</div>
+        <div class="legend-item"><span class="dot dot-overflow"></span> Overflow / Danger (85%+)</div>
+        <div class="bin-list" id="binList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">How a complaint moves through the system</h2>
+        <p class="section-desc">From the moment you spot an overflowing bin to the moment it's cleared.</p>
+      </div>
+    </div>
+    <div class="process-strip">
+      <div class="process-card">
+        <div class="process-num">1</div>
+        <div class="process-icon">&#128100;</div>
+        <div class="process-title">Citizen reports a problem</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">2</div>
+        <div class="process-icon">&#128276;</div>
+        <div class="process-title">Complaint is sent to the system</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">3</div>
+        <div class="process-icon">&#128100;</div>
+        <div class="process-title">Admin views the complaint</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">4</div>
+        <div class="process-icon">&#128205;</div>
+        <div class="process-title">Admin checks bin details &amp; location</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">5</div>
+        <div class="process-icon">&#128666;</div>
+        <div class="process-title">Waste collection is performed</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">6</div>
+        <div class="process-icon">&#9989;</div>
+        <div class="process-title">Collection status is updated</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">7</div>
+        <div class="process-icon">&#128421;</div>
+        <div class="process-title">Dashboard information is updated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Smart Waste Monitoring System &mdash; a cleaner ward, reported by the people who live in it.</span>
+    <span>Municipality staff can sign in for the full dashboard &rarr; <a href="admin.html">Admin Login</a></span>
+  </div>
+</footer>
+
+<!-- Complaint modal -->
+<div class="modal-backdrop" id="complaintModal">
+  <div class="modal">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h3>Report an Overflowing Bin</h3>
+    <p class="section-desc" style="margin-bottom:16px;">Pick the bin, tell us what you saw, and the municipality will be notified.</p>
+    <form id="complaintForm" class="form-grid">
+      <div class="form-row">
+        <label for="cf-binSelect">Which bin?</label>
+        <select id="cf-binSelect" required>
+          <option value="" disabled selected>Loading bins…</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="cf-name">Your name</label>
+        <input id="cf-name" required placeholder="e.g. Ramesh" />
+      </div>
+      <div class="form-row">
+        <label for="cf-phone">Phone number</label>
+        <input id="cf-phone" required placeholder="e.g. 9876543210" />
+      </div>
+      <div class="form-row">
+        <label for="cf-desc">What did you notice?</label>
+        <textarea id="cf-desc" required placeholder="e.g. Bin is overflowing since yesterday, smell is bad"></textarea>
+      </div>
+      <button type="submit" class="btn btn-solid">Submit Complaint</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "dustbins": [
+    {
+      "id": 1,
+      "name": "Bus Stand Bin",
+      "area": "Thiruthuraipoondi",
+      "lat": 10.5453,
+      "lng": 79.6357,
+      "fillLevel": 0,
+      "status": "normal",
+      "lastUpdated": "2026-10-07T07:55:53.410Z"
+    },
+    {
+      "id": 2,
+      "name": "Market Bin",
+      "area": "Thanjavur",
+      "lat": 10.787,
+      "lng": 79.1378,
+      "fillLevel": 40,
+      "status": "normal",
+      "lastUpdated": "2026-09-19T05:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Beach Road Bin",
+      "area": "Velankanni",
+      "lat": 10.681,
+      "lng": 79.8449,
+      "fillLevel": 0,
+      "status": "normal",
+      "lastUpdated": "2026-11-10T10:09:13.947Z"
+    },
+    {
+      "id": 4,
+      "name": "Central Bus Stand Bin",
+      "area": "Trichy",
+      "lat": 10.7905,
+      "lng": 78.7047,
+      "fillLevel": 88,
+      "status": "overflow",
+      "lastUpdated": "2026-09-19T05:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "T. Nagar Bin",
+      "area": "Chennai",
+      "lat": 13.0418,
+      "lng": 80.2341,
+      "fillLevel": 15,
+      "status": "normal",
+      "lastUpdated": "2026-09-19T05:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Gandhi Market Bin",
+      "area": "Madurai",
+      "lat": 9.9252,
+      "lng": 78.1198,
+      "fillLevel": 65,
+      "status": "warning",
+      "lastUpdated": "2026-09-19T05:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "name": "pkt bin",
+      "area": "pattukkottai",
+      "lat": 10.4162901,
+      "lng": 79.3205603,
+      "fillLevel": 0,
+      "status": "normal",
+      "lastUpdated": "2026-11-10T10:06:11.755Z"
+    }
+  ],
+  "complaints": [
+    {
+      "id": 1,
+      "dustbinId": 1,
+      "dustbinName": "Bus Stand Bin",
+      "area": "Thiruthuraipoondi",
+      "lat": 10.5453,
+      "lng": 79.6357,
+      "name": "Ramesh",
+      "phone": "9876543210",
+      "description": "Bin is overflowing near the bus stand entrance, bad smell.",
+      "status": "resolved",
+      "createdAt": "2026-09-19T06:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "dustbinId": 1,
+      "dustbinName": "Bus Stand Bin",
+      "area": "Thiruthuraipoondi",
+      "lat": 10.5453,
+      "lng": 79.6357,
+      "name": "avi",
+      "phone": "8925062815",
+      "description": "bin overflowing and it smells bad",
+      "status": "pending",
+      "createdAt": "2026-09-19T09:56:55.294Z"
+    },
+    {
+      "id": 3,
+      "dustbinId": 3,
+      "dustbinName": "Beach Road Bin",
+      "area": "Velankanni",
+      "lat": 10.681,
+      "lng": 79.8449,
+      "name": "anu",
+      "phone": "9897969594",
+      "description": "bin is overflowing and it small bad",
+      "status": "resolved",
+      "createdAt": "2026-11-10T10:08:34.194Z"
+    }
+  ]
+}

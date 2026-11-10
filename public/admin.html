@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard — Smart Waste Monitoring System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">&#9851;</span>
+      Clean&nbsp;City
+    </a>
+    <nav class="nav-actions">
+      <button id="themeToggle" class="theme-toggle" title="Toggle theme">&#9728;</button>
+      <a href="index.html" class="btn btn-ghost">Public Map</a>
+      <button id="logoutBtn" class="btn btn-ghost" style="display:none;">Log out</button>
+    </nav>
+  </div>
+</header>
+
+<!-- LOGIN VIEW -->
+<div class="login-wrap" id="loginView">
+  <div class="card login-card">
+    <h2>Municipality Login</h2>
+    <p class="section-desc" style="margin-bottom:20px;">Only authorised staff can view and manage citizen complaints.</p>
+    <form id="loginForm" class="form-grid">
+      <div class="form-row">
+        <label for="lg-user">Username</label>
+        <input id="lg-user" required placeholder="Username" autocomplete="username" />
+      </div>
+      <div class="form-row">
+        <label for="lg-pass">Password</label>
+        <input id="lg-pass" type="password" required placeholder="Password" autocomplete="current-password" />
+      </div>
+      <p id="loginError" style="color:var(--danger); font-size:0.85rem; display:none;">Invalid username or password.</p>
+      <button type="submit" class="btn btn-solid">Log In</button>
+    </form>
+  </div>
+</div>
+
+<!-- DASHBOARD VIEW -->
+<main id="dashView" style="display:none;">
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Complaints Dashboard</h2>
+          <p class="section-desc">All complaints reported by citizens, newest first. Select one to track the collection vehicle live.</p>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div>
+          <div id="complaintsList"></div>
+        </div>
+        <aside class="track-panel">
+          <h3 style="margin:0 0 6px; font-family:var(--font-display);">Live Vehicle Tracking</h3>
+          <p class="section-desc" id="trackHint">Select a complaint to track the collection team reaching that bin.</p>
+          <div id="trackMap"></div>
+          <div class="progress-bar" id="trackProgressWrap" style="display:none;">
+            <div class="progress-bar-fill" id="trackProgressFill"></div>
+          </div>
+          <div class="track-status" id="trackStatus"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Add a New Dustbin</h2>
+          <p class="section-desc">Type any town or area name in Tamil Nadu to locate it, then register a bin there.</p>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="card">
+          <form id="addBinForm" class="form-grid">
+            <div class="form-row">
+              <label for="ab-name">Bin name</label>
+              <input id="ab-name" required placeholder="e.g. Market Street Bin" />
+            </div>
+            <div class="form-row">
+              <label for="ab-place">Town / area in Tamil Nadu</label>
+              <div style="display:flex; gap:10px;">
+                <input id="ab-place" required placeholder="e.g. Thiruthuraipoondi" style="flex:1;" />
+                <button type="button" id="ab-locate" class="btn btn-ghost btn-sm">Locate</button>
+              </div>
+            </div>
+            <p id="ab-locateMsg" class="section-desc" style="display:none;"></p>
+            <button type="submit" class="btn btn-solid" id="ab-submit" disabled>Add Dustbin</button>
+          </form>
+        </div>
+        <aside class="track-panel">
+          <h3 style="margin:0 0 6px; font-family:var(--font-display);">Location preview</h3>
+          <div id="addBinMap"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
